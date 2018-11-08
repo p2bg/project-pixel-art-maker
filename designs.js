@@ -5,6 +5,8 @@
 
 function makeGrid() {
 
+	const column = $('#inputHeight').val();
+	console.log('column');
 // Your code goes here!
 
 }
