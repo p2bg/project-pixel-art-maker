@@ -1,4 +1,9 @@
 // Select color input
+var color = $('#colorPicker').val();
+$('#colorPicker').change(function(){
+	color = $(this).val();
+	console.log(color);
+});
 
 // Select size input
 var sizeX = $('#inputWidth').val();
@@ -6,17 +11,15 @@ var sizeY = $('#inputHeight').val();
 
 $('#inputWidth').change(function(){
 	sizeX = $(this).val();
-	console.log(sizeX);
 });
 $('#inputHeight').change(function(){
 	sizeY = $(this).val();
-	console.log(sizeY);
 });
 
 // When size is submitted by the user, call makeGrid()
 $('input[type=submit]').click(function(event){
-	event.preventDefault();
-	$('#pixelCanvas tr').remove();
+	event.preventDefault(); //prevent reloading the page when hitting the submit button
+	$('#pixelCanvas tr').remove();//remove previous grid
 	makeGrid();
 });
 
@@ -29,5 +32,9 @@ function makeGrid() {
 			}
 		$('#pixelCanvas').append('</tr>');
 	}
-	console.log(sizeX + sizeY);// Your code goes here!
 }
+
+//altera a cor do quadrado
+$( '#pixelCanvas' ).on( 'click', 'td', function() {
+	$(this).css("background-color",color);
+});
